@@ -67,8 +67,6 @@ afa-dashboard-arg/
 ├── NAMESPACE                    # R package namespace
 ├── README.md                    # Project overview
 ├── CODESTYLE.md                 # Coding and commenting standards
-├── roadmap.md                   # Strategic roadmap and block status
-├── proj_evolution.md            # ToR alignment and progress report
 │
 ├── R/
 │   ├── global.R                 # Global constants and library loading
@@ -91,8 +89,7 @@ afa-dashboard-arg/
 │
 ├── data/
 │   ├── mock_dataset.rds         # Simulated default dataset
-│   ├── iecs_data.rds            # Reference dataset (Santoro et al., 2022) — not exposed in the dashboard; console/inspection use only
-│   └── cache/                   # Auto-generated: cached datasets
+│   └── iecs_data.rds            # Reference dataset (Santoro et al., 2022) — not exposed in the dashboard; console/inspection use only
 │
 ├── data-raw/
 │   └── prepare_iecs.R           # Reproducible script documenting the IECS/Santoro reference parameters and regenerating iecs_data.rds
@@ -163,8 +160,6 @@ rsconnect::deployApp(
 ## Documentation
 
 - **Implementation Guide** (`docs/implementation_guide.md`) — module architecture, SEIR equations, dataset specification, visual design system, deployment instructions
-- **Roadmap** (`roadmap.md`) — development blocks and delivery status
-- **Project Evolution** (`proj_evolution.md`) — ToR alignment and progress report
 
 ---
 
@@ -179,4 +174,4 @@ https://doi.org/10.1371/journal.pgph.0000186
 
 **Maintainer:** Cristian Paez  
 **Project:** Analysis for Action (Argentina Unit)  
-**Date:** May 2026
+**Date:** June 2026

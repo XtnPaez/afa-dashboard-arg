@@ -7,7 +7,7 @@
 | **Author** | Cristian Paez |
 | **Version** | 2.0 |
 | **Date** | May 2026 |
-| **Related documents** | `README.md`, `roadmap.md`, `proj_evolution.md` |
+| **Related documents** | `README.md` |
 
 ---
 
@@ -101,8 +101,6 @@ afa-dashboard-arg/
 ├── NAMESPACE                    # R package namespace
 ├── README.md                    # Project overview
 ├── CODESTYLE.md                 # Coding and commenting standards
-├── roadmap.md                   # Strategic roadmap and block status
-├── proj_evolution.md            # ToR alignment and progress report
 │
 ├── R/
 │   ├── global.R                 # Global constants and library loading
@@ -113,7 +111,6 @@ afa-dashboard-arg/
 │   ├── mod_ui_simple.R          # Simplified View UI layout and KPI cards
 │   ├── mod_server.R             # Main server: parameter wiring, model orchestration
 │   ├── mod_server_simple.R      # Simplified View server: isolated SEIR + alarm logic
-│   ├── mod_server_reactivity.R  # Cross-module reactivity scaffold (reserved)
 │   ├── mod_helpers_simple.R     # Shared helpers: alarm shapes, state labels, metrics
 │   ├── mod_model.R              # SEIR ODE model logic
 │   ├── mod_viz.R                # Visualisation module (ggplot2)
@@ -127,7 +124,6 @@ afa-dashboard-arg/
 ├── data/
 │   ├── mock_dataset.rds         # Simulated default dataset
 │   ├── iecs_data.rds            # Reference dataset (Santoro et al., 2022) — not exposed in the dashboard; console/inspection use only
-│   └── cache/                   # Auto-generated: cached datasets (save_dataset())
 │
 ├── data-raw/
 │   └── prepare_iecs.R           # Reproducible script to regenerate iecs_data.rds
