@@ -90,9 +90,6 @@ afa-dashboard-arg/
 ├── data/
 │   ├── mock_dataset.rds         # Simulated default dataset
 │
-├── data-raw/
-│   └── prepare_iecs.R           # Reproducible script documenting the IECS/Santoro reference parameters and regenerating iecs_data.rds
-│
 ├── docs/
 │   └── implementation_guide.md  # Full technical documentation (Product 3a)
 │
@@ -131,15 +128,6 @@ The platform supports two dataset sources, selectable from the entry screen:
 |--------|-------------|
 | Simulated (mock) | Synthetic dataset generated from default epidemiological parameters. Use for free exploration. |
 | Upload your own (CSV) | Upload a two-column CSV (`parameter`, `value`) with your regional epidemiological and resource parameters. Argentina reference defaults are shown in the modal as a guide. See the modal dialog for the full field specification. |
-
-### Methodological reference (not a dashboard input)
-
-The default parameter values shown as a guide in the CSV upload modal, and several of the constants in `global.R` (e.g. `INITIAL_R0`, `INITIAL_IFR`), are informed by the IECS/Santoro dynamic transmission model for Argentina (Santoro et al., 2022 — see References). This dataset is **not** offered as a loadable source on the dashboard; it served as methodological inspiration during development. `data-raw/prepare_iecs.R` documents the full derivation and is kept in the repository for traceability. Developers who want to inspect the reference values directly can do so from the R console:
-
-```r
-source("R/data_interface.R")
-load_iecs_data()
-```
 
 ---
 
