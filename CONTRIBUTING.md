@@ -2,8 +2,6 @@
 
 Thank you for your interest in contributing to the project — a modular Shiny dashboard for infectious disease modelling, developed as part of Analysis for Action (Argentina Unit).
 
-The platform serves three ToR deliverables: an interactive COVID-19 Argentina case study (Product 1), the modular Shiny dashboard itself (Product 2), and technical documentation (Product 3). The case study (Product 1) is a separate document deliverable and is not part of the dashboard's data flow described below.
-
 This project follows best practices for reproducible and modular Shiny development in R.
 
 ---
@@ -34,13 +32,6 @@ afa-dashboard-arg/
 │       └── utils_dependencies.R # Automatic dependency detection and installation
 ├── data/
 │   ├── mock_dataset.rds   # Simulated default dataset
-│   └── iecs_data.rds      # Reference dataset (Santoro et al., 2022) — not
-│                           # exposed on the dashboard; console/inspection use
-│                           # only via load_iecs_data(). See section "Dataset
-│                           # sources" below.
-├── data-raw/
-│   └── prepare_iecs.R     # Reproducible script documenting the IECS/Santoro
-│                           # reference parameters and regenerating iecs_data.rds
 ├── docs/
 │   └── implementation_guide.md # Full technical documentation
 └── www/
