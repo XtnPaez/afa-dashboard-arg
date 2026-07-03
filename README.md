@@ -89,7 +89,6 @@ afa-dashboard-arg/
 │
 ├── data/
 │   ├── mock_dataset.rds         # Simulated default dataset
-│   └── iecs_data.rds            # Reference dataset (Santoro et al., 2022) — not exposed in the dashboard; console/inspection use only
 │
 ├── data-raw/
 │   └── prepare_iecs.R           # Reproducible script documenting the IECS/Santoro reference parameters and regenerating iecs_data.rds
