@@ -82,8 +82,7 @@ install.packages(c(
 - Web server: shinyapps.io (current deployment) or self-hosted Shiny Server
 - No database management system is required. Datasets are stored as `.rds` files in the
   `data/` directory.
-- API integration capabilities are documented in section 8.4 and reserved for a future release.
-
+  
 ---
 
 ## 3. Repository Structure
@@ -443,5 +442,3 @@ LOG_LEVEL=WARN   # suppress DEBUG and INFO output in production
 | Sociodemographic data layer | Out of scope — relevant fields should be included in user CSV |
 | ICU / ventilator occupancy uses rolling sum approximation | By design — queueing model requires individual-level data not available |
 | IFR applied as a global value | By design — age-stratified IFR is outside current ToR scope |
-
-to Nacional de Estadística y Censos (INDEC). Proyecciones de población. Available at: https://www.indec.gob.ar/indec/web/Nivel4-Tema-2-24-84
