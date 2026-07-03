@@ -150,15 +150,6 @@ rsconnect::deployApp(
 
 ---
 
-## References
-
-Santoro A, López Osornio A, Williams I, et al. Development and application of a dynamic
-transmission model of health systems' preparedness and response to COVID-19 in twenty-six
-Latin American and Caribbean countries. *PLOS Glob Public Health.* 2022;2(3):e0000186.
-https://doi.org/10.1371/journal.pgph.0000186
-
----
-
 **Maintainer:** Cristian Paez  
 **Project:** Analysis for Action (Argentina Unit)  
 **Date:** June 2026
