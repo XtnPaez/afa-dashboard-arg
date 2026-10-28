@@ -4,7 +4,7 @@
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-shinyapps.io-324027?style=flat-square)](https://cpaez.shinyapps.io/afa-dashboard-arg/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
-[![R](https://img.shields.io/badge/R-%3E%3D%204.4-276DC3?style=flat-square)](https://www.r-project.org/)
+[![R](https://img.shields.io/badge/R-%3E%3D%204.3-276DC3?style=flat-square)](https://www.r-project.org/)
 
 ---
 
@@ -152,4 +152,4 @@ rsconnect::deployApp(
 
 **Maintainer:** Cristian Paez  
 **Project:** Analysis for Action (Argentina Unit)  
-**Date:** June 2026
+**Date:** October 2026
