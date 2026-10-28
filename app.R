@@ -48,9 +48,21 @@ ui <- fluidPage(
   useShinyjs(),
   tags$head(
     tags$title("SEIR Dashboard — Analysis for Action"),
+    tags$script("document.documentElement.lang = 'en';"),
     tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
   ),
-  uiOutput("main_ui")
+  uiOutput("main_ui"),
+  # Funding acknowledgement (Wellcome "Funded by" guidance: bottom
+  # left, linked to wellcome.org). Approved artwork, unmodified,
+  # 80 px high (the minimum) (minimum on screen is 80 px).
+  tags$footer(
+    class = "afa-footer",
+    tags$a(
+      href = "https://wellcome.org", target = "_blank", rel = "noopener",
+      tags$img(src = "img/wellcome-funded-by-dark.png",
+               alt = "Funded by Wellcome", class = "afa-footer-logo")
+    )
+  )
 )
 
 # ============================================================

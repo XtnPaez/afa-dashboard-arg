@@ -11,7 +11,7 @@
    - Typeface: Open Sans (SIL Open Font Licence 1.1), packaged in
      www/fonts/ so the app does not depend on an external font
      service.
-   - No text smaller than 0.8125rem (13 px).
+   - No text smaller than 0.875rem (14 px).
    - No changes to application logic or module structure.
 
    AfA colour reference:
@@ -76,7 +76,7 @@ p {
 
 /* Bootstrap's <small> and form labels: keep above the minimum */
 small, .small {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
 }
 
 label, .control-label {
@@ -88,13 +88,13 @@ label, .control-label {
 .irs--shiny .irs-min, .irs--shiny .irs-max,
 .irs--shiny .irs-from, .irs--shiny .irs-to,
 .irs--shiny .irs-single, .irs--shiny .irs-grid-text {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
 }
 
 /* Keyboard focus must always be visible */
 a:focus-visible, button:focus-visible, .btn:focus-visible,
 input:focus-visible, select:focus-visible, summary:focus-visible {
-  outline: 3px solid #F59342;
+  outline: 3px solid #D17E38;
   outline-offset: 2px;
 }
 
@@ -133,7 +133,7 @@ input:focus-visible, select:focus-visible, summary:focus-visible {
 }
 
 .afa-navbar-meta {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   color: rgba(244, 246, 245, 0.8);
   font-style: italic;
 }
@@ -146,7 +146,7 @@ input:focus-visible, select:focus-visible, summary:focus-visible {
 
 /* Navigation buttons (override the generic .btn rules below) */
 .btn.afa-nav-btn {
-  font-size: 0.8125rem !important;
+  font-size: 0.875rem !important;
   padding: 4px 12px !important;
   border-radius: 5px !important;
   background: transparent !important;
@@ -168,8 +168,8 @@ input:focus-visible, select:focus-visible, summary:focus-visible {
    Help text, notes and panels
    ============================================================ */
 .afa-help-text {
-  font-size: 0.8125rem;
-  color: #5F6B58;
+  font-size: 0.875rem;
+  color: #48553F;
   line-height: 1.45;
 }
 
@@ -181,11 +181,9 @@ input:focus-visible, select:focus-visible, summary:focus-visible {
 }
 
 .afa-panel-title {
-  font-size: 0.8125rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #48553F;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
   padding-bottom: 8px;
   border-bottom: 0.5px solid #D0D4CE;
   margin-bottom: 10px;
@@ -234,15 +232,15 @@ input:focus-visible, select:focus-visible, summary:focus-visible {
 }
 
 .afa-kpi-subtitle {
-  font-size: 0.8125rem;
-  color: #5F6B58;
+  font-size: 0.875rem;
+  color: #48553F;
   margin-bottom: 14px;
   line-height: 1.4;
 }
 
 /* Explanation shown under N/A */
 .afa-unavailable-note {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   color: #752111;
   background: #F9EDEA;
   border: 0.5px solid #E8B8AD;
@@ -265,7 +263,7 @@ input:focus-visible, select:focus-visible, summary:focus-visible {
 
 .afa-threshold-note p {
   margin: 0;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   line-height: 1.4;
 }
 
@@ -275,20 +273,20 @@ input:focus-visible, select:focus-visible, summary:focus-visible {
 }
 
 .afa-threshold-values {
-  color: #5F6B58 !important;
+  color: #48553F !important;
 }
 
 .afa-threshold-controlled { border-left-color: #3EA27F; }
-.afa-threshold-warning    { border-left-color: #F59342; background: #FDF3E9; }
+.afa-threshold-warning    { border-left-color: #D17E38; background: #FDF3E9; }
 .afa-threshold-critical   { border-left-color: #752111; background: #F9EDEA; }
-.afa-threshold-unknown    { border-left-color: #5F6B58; }
+.afa-threshold-unknown    { border-left-color: #48553F; }
 
 /* Expandable explanation (<details>) */
 .afa-help {
   width: 100%;
   margin-top: 14px;
   text-align: left;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
 }
 
 .afa-help summary {
@@ -299,7 +297,7 @@ input:focus-visible, select:focus-visible, summary:focus-visible {
 }
 
 .afa-help p {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   color: #48553F;
   margin: 6px 0 0;
   line-height: 1.45;
@@ -622,4 +620,22 @@ input[type="radio"]:checked {
    ============================================================ */
 .fade-transition {
   transition: opacity 0.4s ease-in-out;
+}
+
+
+/* ============================================================
+   Footer — "Funded by Wellcome" (approved artwork, unaltered)
+   Minimum logo height on screen is 80 px; clear space around the
+   logo is at least two "w" widths of the logotype.
+   ============================================================ */
+.afa-footer {
+  padding: 16px 1rem 16px;
+  margin-top: 16px;
+  text-align: left;
+}
+
+.afa-footer-logo {
+  height: 80px;   /* Wellcome minimum on screen */
+  width: auto;
+  display: block;
 }

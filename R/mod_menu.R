@@ -18,7 +18,7 @@
 #   Same navbar as the entry screen (class "afa-navbar" in
 #   custom.css: darker green, logo hook, larger title). The
 #   active view is marked with the AfA orange and aria-current.
-#   No text smaller than 0.8125rem.
+#   No text smaller than 0.875rem.
 # ============================================================
 
 

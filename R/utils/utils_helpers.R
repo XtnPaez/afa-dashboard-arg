@@ -102,7 +102,7 @@ normalise_ifr_to_pct <- function(ifr_raw) {
 # Returns:
 #   A tags$img() or NULL.
 # ------------------------------------------------------------
-afa_logo_ui <- function(height = 30) {
+afa_logo_ui <- function(height = 32) {
   if (!file.exists(file.path("www", "img", "afa-logo-white.png"))) {
     return(NULL)
   }

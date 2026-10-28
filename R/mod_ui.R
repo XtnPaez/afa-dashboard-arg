@@ -27,7 +27,7 @@
 #   * Total population minimum raised to 10,001: the simulation
 #     starts with 10,000 infectious people, so a smaller
 #     population gave negative susceptibles.
-#   * Panel titles / small text raised to at least 0.8125rem.
+#   * Panel titles / small text raised to at least 0.875rem.
 #   * Sidebar background #F4F6F5 with white panels (was white
 #     with beige panels).
 # ============================================================
@@ -60,24 +60,24 @@ ui_seir_params <- function(ns) {
 
     # R0: basic reproduction number
     sliderInput(ns("r0_value"),
-                label = HTML("Basic Reproduction Number (R<sub>0</sub>)"),
+                label = HTML("Basic reproduction number (R<sub>0</sub>)"),
                 min = 0.5, max = 5.0, value = INITIAL_R0, step = 0.1),
 
     # Incubation period: average days from exposure to infectiousness
     sliderInput(ns("incubation_period"),
-                label = "Incubation Period (days)",
+                label = "Incubation period (days)",
                 min = 1, max = 14, value = INITIAL_INCUBATION_PERIOD,
                 step = 1),
 
     # Infectious period: average days an individual remains infectious
     sliderInput(ns("infectious_period"),
-                label = "Infectious Period (days)",
+                label = "Infectious period (days)",
                 min = 1, max = 21, value = INITIAL_INFECTIOUS_PERIOD,
                 step = 1),
 
     # IFR as percentage [0,100]; converted internally by percent_to_prop()
     sliderInput(ns("ifr_value"),
-                label = "Infection Fatality Rate (IFR, %)",
+                label = "Infection fatality rate (IFR, %)",
                 min = 0.01, max = 5.0, value = INITIAL_IFR * 100,
                 step = 0.01)
   )
@@ -106,8 +106,8 @@ ui_policy_params <- function(ns) {
       inputId  = ns("policy_type"),
       label    = "Type of intervention",
       choices  = c(
-        "No Intervention"   = "no_intervention",
-        "Static Mitigation" = "static_mitigation"
+        "No intervention"   = "no_intervention",
+        "Static mitigation" = "static_mitigation"
       ),
       selected = "no_intervention"
     ),
@@ -118,12 +118,12 @@ ui_policy_params <- function(ns) {
 
     # Compliance: scales the R0 reduction applied by the policy
     sliderInput(ns("compliance_level"),
-                label = "Compliance Level (%)",
+                label = "Compliance level (%)",
                 min = 0, max = 100, value = 50, step = 5),
 
     tags$small(
       class = "afa-help-text",
-      HTML("Static Mitigation reduces effective R<sub>0</sub> by up to 50% at full compliance. It has no effect when \"No Intervention\" is selected.")
+      HTML("Static mitigation reduces effective R<sub>0</sub> by up to 50% at full compliance. It has no effect when \"No intervention\" is selected.")
     )
   )
 }
@@ -156,10 +156,10 @@ ui_resource_params <- function(ns) {
                  "ICU Bed Capacity",
                  INITIAL_ICU_CAPACITY, min = 0),
     numericInput(ns("ventilator_availability"),
-                 "Ventilator Availability",
+                 "Ventilator availability",
                  INITIAL_VENTILATOR_AVAILABILITY, min = 0),
     numericInput(ns("healthcare_staff"),
-                 "Available Healthcare Staff",
+                 "Available healthcare staff",
                  INITIAL_HEALTHCARE_STAFF, min = 0),
 
     # Rate sliders — stored as percentages [0,100]
@@ -168,7 +168,7 @@ ui_resource_params <- function(ns) {
                 min = 0.1, max = 30.0,
                 value = INITIAL_ICU_RATE * 100, step = 0.1),
     sliderInput(ns("ventilator_usage_rate"),
-                "Ventilator Usage Rate (%)",
+                "Ventilator usage rate (%)",
                 min = 0.1, max = 10.0,
                 value = INITIAL_VENTILATOR_RATE * 100, step = 0.1)
   )
@@ -210,7 +210,7 @@ ui_scope_params <- function(ns) {
     # any country-level or subnational population figure.
     numericInput(
       inputId = ns("population"),
-      label   = "Total Population",
+      label   = "Total population",
       value   = POPULATION_ARGENTINA,
       min     = 10001,
       step    = 100000
@@ -221,18 +221,18 @@ ui_scope_params <- function(ns) {
     # intuitiveness (see design decision note above).
     dateInput(
       inputId  = ns("start_date"),
-      label    = "Simulation Start Date",
+      label    = "Simulation start date",
       value    = START_DATE,
-      format   = "dd/mm/yyyy",
+      format   = "d MM yyyy",
       language = "en"
     ),
 
     # Simulation end date — same rationale as start date.
     dateInput(
       inputId  = ns("end_date"),
-      label    = "Simulation End Date",
+      label    = "Simulation end date",
       value    = END_DATE,
-      format   = "dd/mm/yyyy",
+      format   = "d MM yyyy",
       language = "en"
     )
   )
@@ -322,7 +322,7 @@ ui_main <- function(viz_id) {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          font-size: 0.8125rem;
+          font-size: 0.875rem;
         }
       "))
     ),
@@ -361,12 +361,12 @@ ui_main <- function(viz_id) {
 
             # Tab 1: SEIR compartment dynamics and cumulative metrics
             tabPanel(
-              "Epidemic Curves",
+              "Epidemic curves",
               br(),
               tags$div(
                 class = "chart-card",
                 tags$h6(
-                  "SEIR Compartment Dynamics (S, E, I, R)",
+                  "Figure 1. Population in each model compartment over time",
                   style = "color:#1E2A16; font-weight:600; font-size:1rem; margin-bottom:8px;"
                 ),
                 plotOutput(ns_viz("seir_plot"), height = "300px")
@@ -374,7 +374,7 @@ ui_main <- function(viz_id) {
               tags$div(
                 class = "chart-card",
                 tags$h6(
-                  "Simulated Cumulative Cases and Deaths",
+                  "Figure 2. Simulated cumulative cases and deaths over time",
                   style = "color:#1E2A16; font-weight:600; font-size:1rem; margin-bottom:8px;"
                 ),
                 plotOutput(ns_viz("cases_deaths_plot"), height = "260px")
@@ -383,12 +383,12 @@ ui_main <- function(viz_id) {
 
             # Tab 2: Healthcare resource demand vs. capacity
             tabPanel(
-              "Resource Pressure",
+              "Resource pressure",
               br(),
               tags$div(
                 class = "chart-card",
                 tags$h6(
-                  "Critical Resource Demand vs. Capacity",
+                  "Figure 3. Critical resource demand and capacity over time",
                   style = "color:#1E2A16; font-weight:600; font-size:1rem; margin-bottom:4px;"
                 ),
                 tags$small(
@@ -403,12 +403,12 @@ ui_main <- function(viz_id) {
 
             # Tab 3: Simulation output table and CSV download
             tabPanel(
-              "Simulated Data",
+              "Simulated data",
               br(),
               tags$div(
                 class = "chart-card",
                 tags$h6(
-                  "Simulation Output — First 10 Rows",
+                  "Table 1. Simulation output, first 10 rows",
                   style = "color:#1E2A16; font-weight:600; font-size:1rem; margin-bottom:12px;"
                 ),
                 tableOutput(ns("simulated_data_table")),
@@ -417,34 +417,11 @@ ui_main <- function(viz_id) {
                 # (semicolon separator, European locale)
                 downloadButton(
                   ns("download_csv"),
-                  label = "Download Results (CSV)",
+                  label = "Download results (CSV)",
                   class = "btn btn-primary"
                 )
               )
             )
-          )
-        )
-      ),
-
-      # --------------------------------------------------------
-      # Footer bar
-      # --------------------------------------------------------
-      tags$div(
-        class = "afa-footer",
-        tags$span(
-          tags$span(
-            style = paste(
-              "display:inline-block;",
-              "width:5px; height:5px;",
-              "border-radius:50%;",
-              "background:#F59342;",
-              "margin-right:5px;",
-              "vertical-align:middle;"
-            )
-          ),
-          tags$span(
-            "Analysis for Action · Argentina Unit",
-            style = "color:#5F6B58;"
           )
         )
       )

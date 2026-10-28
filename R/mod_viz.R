@@ -13,7 +13,7 @@
 #     Dark stone   #444443  – Infected
 #     Sea green    #3EA27F  – Recovered
 #   Accent / alert:
-#     Orange       #F59342  – Cumulative Deaths, Demand line
+#     Orange       #D17E38  – Cumulative Deaths, Demand line
 #     Dark green   #324027  – Cumulative Cases, Capacity line
 #   Ribbon fill (excess demand alert):
 #     Earthy warm  #F0D9C8  – translucent warning fill
@@ -61,8 +61,7 @@ viz_plot_server <- function(id, model_data, icu_capacity_input,
     afa_theme <- function() {
       theme_minimal() +
         theme(
-          plot.title         = element_text(hjust = 0.5, face = "bold",
-                                            size = 18, colour = "#1E2A16"),
+          plot.title         = element_blank(),
           axis.title         = element_text(size = 14, colour = "#48553F"),
           axis.text          = element_text(size = 12, colour = "#48553F"),
           legend.position    = "bottom",
@@ -95,7 +94,7 @@ viz_plot_server <- function(id, model_data, icu_capacity_input,
     # --------------------------------------------------------
     # --- SEIR compartment curves plot ---
     # --------------------------------------------------------
-    output$seir_plot <- renderPlot({
+    output$seir_plot <- renderPlot(alt = "Line chart of the number of susceptible, exposed, infected and recovered people over the simulation period. Each compartment has its own colour and line type.", {
       plot_data <- model_data()
 
       if (is.null(plot_data) || nrow(plot_data) == 0) {
@@ -112,9 +111,9 @@ viz_plot_server <- function(id, model_data, icu_capacity_input,
         geom_line(aes(y = I, colour = "Infected",    linetype = "Infected"),    linewidth = 1.1) +
         geom_line(aes(y = R, colour = "Recovered",   linetype = "Recovered"),   linewidth = 1.1) +
         labs(
-          title  = "Population Dynamics (SEIR)",
+          title    = NULL,
           x        = "Date",
-          y        = "Number of Individuals",
+          y        = "Number of individuals",
           colour   = NULL,
           linetype = NULL   # same (empty) title -> one merged legend
         ) +
@@ -141,7 +140,7 @@ viz_plot_server <- function(id, model_data, icu_capacity_input,
     # --------------------------------------------------------
     # --- Cumulative cases and deaths plot ---
     # --------------------------------------------------------
-    output$cases_deaths_plot <- renderPlot({
+    output$cases_deaths_plot <- renderPlot(alt = "Line chart of simulated cumulative cases (solid line) and cumulative deaths (dashed line) over the simulation period.", {
       plot_data <- model_data()
 
       if (is.null(plot_data) || nrow(plot_data) == 0) {
@@ -159,9 +158,9 @@ viz_plot_server <- function(id, model_data, icu_capacity_input,
                       colour = "Cumulative Deaths", linetype = "Cumulative Deaths"),
                   linewidth = 1.1) +
         labs(
-          title  = "Simulated Cumulative Cases and Deaths",
+          title    = NULL,
           x        = "Date",
-          y        = "Cumulative Number",
+          y        = "Cumulative number",
           colour   = NULL,
           linetype = NULL   # same (empty) title -> one merged legend
         ) +
@@ -169,7 +168,7 @@ viz_plot_server <- function(id, model_data, icu_capacity_input,
         scale_colour_manual(
           values = c(
             "Cumulative Cases"  = "#324027",
-            "Cumulative Deaths" = "#F59342"
+            "Cumulative Deaths" = "#D17E38"
           )
         ) +
         scale_linetype_manual(
@@ -184,7 +183,7 @@ viz_plot_server <- function(id, model_data, icu_capacity_input,
     # --------------------------------------------------------
     # --- Critical resource pressure plot ---
     # --------------------------------------------------------
-    output$resource_pressure_plot <- renderPlot({
+    output$resource_pressure_plot <- renderPlot(alt = "Line charts of simulated ICU and ventilator demand (solid line) against capacity (dashed line). Shaded areas mark periods when demand exceeds capacity.", {
       plot_data_raw <- model_data()
 
       current_icu_capacity            <- icu_capacity_input()
@@ -270,9 +269,9 @@ viz_plot_server <- function(id, model_data, icu_capacity_input,
         ) +
         facet_wrap(~Resource_Category, scales = "free_y", ncol = 1) +
         labs(
-          title    = "Critical Resource Demand and Capacity",
+          title    = NULL,
           x        = "Date",
-          y        = "Number of Units",
+          y        = "Number of units",
           colour   = NULL,
           linetype = NULL,
           fill     = NULL
@@ -280,7 +279,7 @@ viz_plot_server <- function(id, model_data, icu_capacity_input,
         scale_y_continuous(labels = scales::comma) +
         scale_colour_manual(
           values = c(
-            "Demand"   = "#F59342",
+            "Demand"   = "#D17E38",
             "Capacity" = "#324027"
           )
         ) +

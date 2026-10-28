@@ -39,7 +39,7 @@
 #     "Controlled": it now resolves to a distinct "unknown"
 #     state ("No data") with an explanatory message.
 #   * Visible threshold feedback added.
-#   * Minimum text size raised to 0.8125rem (13 px).
+#   * Minimum text size raised to 0.875rem (14 px).
 # ============================================================
 
 
@@ -146,8 +146,8 @@ alarm_shape_svg <- function(state = "controlled", size = 64) {
 # ------------------------------------------------------------
 state_label_ui <- function(state) {
   conf <- list(
-    controlled = list(text = "Controlled", colour = "#3EA27F"),
-    warning    = list(text = "Warning",    colour = "#F59342"),
+    controlled = list(text = "Controlled", colour = "#1E6B4F"),
+    warning    = list(text = "Warning",    colour = "#8A4B12"),
     critical   = list(text = "Critical",   colour = "#752111"),
     unknown    = list(text = "No data",    colour = "#5F6B58")
   )
@@ -157,10 +157,8 @@ state_label_ui <- function(state) {
   tags$p(
     cfg$text,
     style = paste0(
-      "font-size:0.8125rem;",
+      "font-size:0.875rem;",
       "font-weight:700;",
-      "letter-spacing:0.08em;",
-      "text-transform:uppercase;",
       "color:", cfg$colour, ";",
       "margin:0 0 4px;"
     )
@@ -193,7 +191,7 @@ metric_value_ui <- function(formatted_value, unit_label) {
     tags$br(),
     tags$span(
       unit_label,
-      style = "font-size:0.8125rem; color:#5F6B58;"
+      style = "font-size:0.875rem; color:#5F6B58;"
     )
   )
 }

@@ -40,7 +40,7 @@
 #   * Help text ("What does this show?") on every card.
 #   * Visible threshold feedback under every card.
 #   * Guidance text on how the thresholds work.
-#   * Minimum text size 0.8125rem (13 px).
+#   * Minimum text size 0.875rem (14 px).
 # ============================================================
 
 
@@ -123,11 +123,9 @@ mod_ui_simple <- function(id) {
   ns <- NS(id)
 
   section_title_style <- paste(
-    "font-size:0.8125rem;",
+    "font-size:0.875rem;",
     "font-weight:600;",
     "color:#48553F;",
-    "text-transform:uppercase;",
-    "letter-spacing:0.05em;",
     "margin-bottom:18px;"
   )
 
@@ -149,7 +147,7 @@ mod_ui_simple <- function(id) {
       tags$div(
         style = "text-align:center; margin-bottom:32px;",
         tags$h2(
-          "Epidemic Status — Simplified View",
+          "Epidemic status: simplified view",
           style = paste(
             "font-size:1.6rem;",
             "font-weight:600;",
@@ -183,7 +181,7 @@ mod_ui_simple <- function(id) {
         # Card 1 — Epidemic Trajectory
         kpi_card_ui(
           card_id     = "card_trajectory",
-          title       = "Epidemic Trajectory",
+          title       = "Epidemic trajectory",
           subtitle    = "Weekly growth rate of infectious cases (I compartment) — computed over the most recent 7 simulated days",
           shape_id    = ns("shape_trajectory"),
           value_id    = ns("value_trajectory"),
@@ -199,7 +197,7 @@ mod_ui_simple <- function(id) {
         # Card 2 — ICU Pressure
         kpi_card_ui(
           card_id     = "card_icu",
-          title       = "ICU Pressure",
+          title       = "ICU pressure",
           subtitle    = "ICU occupancy on the final simulation day as % of capacity",
           shape_id    = ns("shape_icu"),
           value_id    = ns("value_icu"),
@@ -215,7 +213,7 @@ mod_ui_simple <- function(id) {
         # Card 3 — Cumulative Impact
         kpi_card_ui(
           card_id     = "card_deaths",
-          title       = "Cumulative Impact",
+          title       = "Cumulative impact",
           subtitle    = "Cumulative deaths as % of total population (final simulation day)",
           shape_id    = ns("shape_deaths"),
           value_id    = ns("value_deaths"),
@@ -236,12 +234,12 @@ mod_ui_simple <- function(id) {
         class = "afa-panel",
         style = "max-width:600px; margin:0 auto 28px;",
 
-        tags$div("Scenario Parameters", style = section_title_style),
+        tags$div("Scenario parameters", style = section_title_style),
 
         # R₀ slider — range and default from global.R
         sliderInput(
           inputId = ns("simple_r0"),
-          label   = HTML("R₀ — Basic Reproduction Number"),
+          label   = HTML("R₀: basic reproduction number"),
           min     = 0.5,
           max     = 6.0,
           value   = INITIAL_R0,
@@ -252,7 +250,7 @@ mod_ui_simple <- function(id) {
         # Compliance Level slider — fixed default 50 per roadmap spec
         sliderInput(
           inputId = ns("simple_compliance"),
-          label   = "Compliance Level (%)",
+          label   = "Compliance level (%)",
           min     = 0,
           max     = 100,
           value   = 50,
@@ -271,9 +269,9 @@ mod_ui_simple <- function(id) {
             style = "flex:1; min-width:180px;",
             dateInput(
               inputId  = ns("simple_start_date"),
-              label    = "Simulation Start Date",
+              label    = "Simulation start date",
               value    = START_DATE,
-              format   = "dd/mm/yyyy",
+              format   = "d MM yyyy",
               language = "en",
               width    = "100%"
             )
@@ -282,9 +280,9 @@ mod_ui_simple <- function(id) {
             style = "flex:1; min-width:180px;",
             dateInput(
               inputId  = ns("simple_end_date"),
-              label    = "Simulation End Date",
+              label    = "Simulation end date",
               value    = END_DATE,
-              format   = "dd/mm/yyyy",
+              format   = "d MM yyyy",
               language = "en",
               width    = "100%"
             )
@@ -317,7 +315,7 @@ mod_ui_simple <- function(id) {
           ),
           `aria-controls` = "simple_settings_panel",
           `aria-expanded` = "false",
-          "▼  Settings — Alarm Thresholds"
+          "▼  Settings: alarm thresholds"
         ),
 
         # Settings panel — hidden by default
@@ -326,7 +324,7 @@ mod_ui_simple <- function(id) {
           class = "afa-panel",
           style = "display:none;",
 
-          tags$div("Alarm Threshold Configuration", style = section_title_style),
+          tags$div("Alarm threshold configuration", style = section_title_style),
 
           # How the thresholds work
           tags$p(
@@ -342,7 +340,7 @@ mod_ui_simple <- function(id) {
 
           # --- ICU thresholds ---
           tags$p(
-            tags$strong("ICU Pressure", style = group_title_style),
+            tags$strong("ICU pressure", style = group_title_style),
             style = "margin-bottom:4px;"
           ),
           tags$div(
@@ -369,7 +367,7 @@ mod_ui_simple <- function(id) {
 
           # --- Epidemic Trajectory thresholds ---
           tags$p(
-            tags$strong("Epidemic Trajectory", style = group_title_style),
+            tags$strong("Epidemic trajectory", style = group_title_style),
             style = "margin-bottom:4px;"
           ),
           tags$div(
@@ -396,7 +394,7 @@ mod_ui_simple <- function(id) {
 
           # --- Cumulative Impact thresholds ---
           tags$p(
-            tags$strong("Cumulative Impact", style = group_title_style),
+            tags$strong("Cumulative impact", style = group_title_style),
             style = "margin-bottom:4px;"
           ),
           tags$div(
@@ -420,24 +418,6 @@ mod_ui_simple <- function(id) {
               )
             )
           )
-        )
-      ),
-
-      # --------------------------------------------------------
-      # Footer attribution strip
-      # --------------------------------------------------------
-      tags$div(
-        style = paste(
-          "margin-top:48px;",
-          "border-top:0.5px solid #D0D4CE;",
-          "padding-top:12px;",
-          "display:flex;",
-          "justify-content:space-between;",
-          "align-items:center;"
-        ),
-        tags$span(
-          "Analysis for Action · Argentina Unit",
-          style = "font-size:0.8125rem; color:#5F6B58;"
         )
       )
     )

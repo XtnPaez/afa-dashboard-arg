@@ -21,7 +21,7 @@
 #     "Range" column generated from CSV_PARAM_RANGES, the same
 #     table used to validate the file.
 #   * Navbar: darker AfA green, logo hook, larger title; no text
-#     smaller than 0.8125rem (13 px).
+#     smaller than 0.875rem (14 px).
 # ============================================================
 
 
@@ -65,7 +65,7 @@ csv_param_table_ui <- function() {
   })
 
   tags$table(
-    style = "width:100%; font-size:0.8125rem; border-collapse:collapse;",
+    style = "width:100%; font-size:0.875rem; border-collapse:collapse;",
     tags$thead(tags$tr(
       th("parameter"), th("example"), th("range"), th("description")
     )),
@@ -106,7 +106,7 @@ status_badge_ui <- function(id, message, ok = TRUE) {
     )),
     tags$span(
       message,
-      style = paste0("font-size:0.8125rem; color:", text, "; font-weight:500;")
+      style = paste0("font-size:0.875rem; color:", text, "; font-weight:500;")
     )
   )
 }
@@ -129,11 +129,9 @@ mod_entry_ui <- function(id) {
   ns <- NS(id)
 
   section_label_style <- paste(
-    "font-size:0.8125rem;",
+    "font-size:0.875rem;",
     "font-weight:600;",
     "color:#48553F;",
-    "text-transform:uppercase;",
-    "letter-spacing:0.05em;",
     "margin-bottom:6px;"
   )
 
@@ -149,10 +147,6 @@ mod_entry_ui <- function(id) {
         class = "afa-navbar-brand",
         afa_logo_ui(),
         tags$span(class = "afa-navbar-title", "SEIR Dashboard")
-      ),
-      tags$span(
-        class = "afa-navbar-meta",
-        "Analysis for Action · Argentina Unit"
       )
     ),
 
@@ -174,7 +168,7 @@ mod_entry_ui <- function(id) {
       tags$div(
         style = "text-align:center; margin-bottom:28px;",
         tags$h1(
-          "Epidemiological Modelling Platform",
+          "Epidemiological modelling platform",
           style = paste(
             "font-size:2.4rem;",
             "font-weight:600;",
@@ -259,36 +253,6 @@ mod_entry_ui <- function(id) {
           class = "afa-help-text",
           style = "margin:10px 0 0;",
           "Load a dataset first: the view buttons are enabled once it is ready."
-        )
-      )
-    ),
-
-    # --------------------------------------------------------
-    # Footer bar — attribution strip
-    # --------------------------------------------------------
-    tags$div(
-      style = paste(
-        "background:#F8F5F1;",
-        "border-top:0.5px solid #D0D4CE;",
-        "padding:10px 24px;",
-        "display:flex;",
-        "justify-content:space-between;",
-        "align-items:center;"
-      ),
-      tags$span(
-        tags$span(
-          style = paste(
-            "display:inline-block;",
-            "width:6px; height:6px;",
-            "border-radius:50%;",
-            "background:#F59342;",
-            "margin-right:6px;",
-            "vertical-align:middle;"
-          )
-        ),
-        tags$span(
-          "Analysis for Action · Argentina Unit",
-          style = "font-size:0.8125rem; color:#5F6B58;"
         )
       )
     )
@@ -387,7 +351,7 @@ mod_entry_server <- function(id, screen, dataset_selector,
           ),
 
           tags$p(
-            style = "font-size:0.875rem; color:#5F6B58; margin-bottom:12px;",
+            style = "font-size:0.875rem; color:#48553F; margin-bottom:12px;",
             "Argentina reference defaults are shown above as a guide — ",
             "replace them with your own regional figures."
           ),
