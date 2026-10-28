@@ -247,7 +247,7 @@ mod_ui_simple <- function(id) {
           width   = "100%"
         ),
 
-        # Compliance Level slider — fixed default 50 per roadmap spec
+        # Compliance Level slider — fixed default of 50
         sliderInput(
           inputId = ns("simple_compliance"),
           label   = "Compliance level (%)",
