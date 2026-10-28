@@ -199,10 +199,17 @@ model_seir_server <- function(id, input_params, raw_data_df) {
           )
 
         # --- Step 8: ICU and ventilator demand ---
+        # Daily demand is driven by NEW infections (each person is
+        # counted once, when infected), not by the size of the
+        # infectious compartment I: I contains the same people on
+        # every day they remain infectious, so using it would count
+        # one person several times. Occupancy is then the rolling sum
+        # of daily demand over the length of stay (each person
+        # occupies a bed for `hospital_stay_days` days).
         results_df <- results_df %>%
           dplyr::mutate(
-            ICU_Daily_Demand = I * icu_admission_rate,
-            Vent_Daily_Demand = I * ventilator_usage_rate,
+            ICU_Daily_Demand = Daily_New_Infections * icu_admission_rate,
+            Vent_Daily_Demand = Daily_New_Infections * ventilator_usage_rate,
             ICU_Occupancy_Sim = RcppRoll::roll_sum(
               ICU_Daily_Demand, n = hospital_stay_days,
               align = "right", fill = NA

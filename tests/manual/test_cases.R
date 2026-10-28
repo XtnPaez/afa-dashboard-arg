@@ -172,3 +172,23 @@ test_that("UI builders render", {
   expect_false(grepl("phased_mitigation|intermittent|icu_triggered",
                      as.character(ui_policy_params(NS("a")))))
 })
+
+test_that("ICU and ventilator demand are driven by new infections, each person counted once", {
+  p <- reactiveVal(list(r0_value = 2.5, incubation_period = 5, infectious_period = 7,
+                        ifr_value = 1, icu_admission_rate = 13.6, ventilator_usage_rate = 2,
+                        policy_type = "no_intervention", compliance_level = 50,
+                        start_date = as.Date("2026-01-01"), end_date = as.Date("2026-12-31"),
+                        population = 1e6, trigger_sim = 1L))
+  raw <- reactive(build_dataset(population = 1e6, start_date = as.Date("2026-01-01"),
+                                end_date = as.Date("2026-12-31")))
+  shiny::testServer(model_seir_server, args = list(input_params = p, raw_data_df = raw), {
+    session$flushReact()
+    df <- session$returned()
+    expect_false(is.null(df))
+    expect_equal(df$ICU_Daily_Demand, df$Daily_New_Infections * 0.136)
+    expect_equal(df$Vent_Daily_Demand, df$Daily_New_Infections * 0.02)
+    # a person occupies a bed once: occupancy can never exceed rate x cumulative cases
+    expect_true(all(df$ICU_Occupancy_Sim <= 0.136 * df$Cumulative_Cases + 1e-6))
+    expect_true(all(df$Vent_Usage_Sim <= 0.02 * df$Cumulative_Cases + 1e-6))
+  })
+})

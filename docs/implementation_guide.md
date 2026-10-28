@@ -350,22 +350,21 @@ R₀ is reduced by 50%. The effective value is clamped to a minimum of 0.5.
 ### 7.4 Healthcare resource demand
 
 ```
-ICU_Daily_Demand_t    = I_t · r_ICU
-Vent_Daily_Demand_t   = I_t · r_vent
+ICU_Daily_Demand_t    = NewInfections_t · r_ICU
+Vent_Daily_Demand_t   = NewInfections_t · r_vent
 ICU_Occupancy_Sim_t   = Σ ICU_Daily_Demand_k  (k = t−h+1 to t)
 Vent_Usage_Sim_t      = Σ Vent_Daily_Demand_k (k = t−h+1 to t)
 ```
 
 Where `h = INITIAL_HOSPITAL_STAY_DAYS` (default: 10 days).
 
-> **Methodological note:** daily demand is derived from the infectious compartment (`I`), not
-> from new infections. Because `I` contains everyone who is infectious on a given day, a person
-> contributes to demand on each day they remain infectious, and the rolling sum then accumulates
-> these daily contributions. The occupancy figure is therefore a prevalence-based indicator of
-> pressure on ICU beds and ventilators, and it tends to be higher than an estimate based on new
-> infections, by a factor that depends mainly on the infectious period. An incidence-based
-> alternative (daily new infections multiplied by the admission rate) would count each person
-> once. The prevalence-based approach is the one implemented in this version.
+> **Methodological note:** daily demand is derived from new infections (`Daily_New_Infections`,
+> that is `σ · E`), not from the infectious compartment `I`, so that each person is counted once,
+> at the point of infection. Using `I` would count the same person on every day they remain
+> infectious. Occupancy is the sum of daily demand over the length of stay `h`. The result depends
+> on `r_ICU` and `r_vent`, which each user supplies in the CSV (or sets with the controls), and on
+> `h`, a constant in `global.R` (`INITIAL_HOSPITAL_STAY_DAYS`). Set them to values appropriate to
+> the country or region being studied.
 >
 > **Approximation note:** ICU and ventilator occupancy are estimated using a rolling sum,
 > which is a computational simplification. A more precise model would use a queueing model
