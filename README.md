@@ -25,7 +25,7 @@ enabling interactive scenario exploration, resource planning, and educational us
 ## Features
 
 - **Interactive SEIR simulation** — adjust R₀, incubation period, infectious period, and IFR in real time
-- **Public policy modelling** — simulate four intervention strategies: no intervention, phased mitigation, intermittent, and ICU-triggered
+- **Public policy modelling** — simulate two intervention modes: no intervention, and static mitigation (a fixed reduction of the reproduction number, scaled by the compliance level)
 - **Healthcare resource pressure analysis** — compare simulated ICU and ventilator demand against configurable capacity thresholds
 - **Simplified View** — decision-maker interface with three KPI alarm cards (Epidemic Trajectory, ICU Pressure, Cumulative Impact) using a geometric colour-coded alarm system
 - **Advanced View** — full parameter control for technical users, including simulation scope (population, start date, end date)
